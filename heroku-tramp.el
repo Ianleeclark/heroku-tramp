@@ -1,3 +1,5 @@
+;;; heroku-tramp.el --- TRAMP integration for heroku  -*- lexical-binding: t; -*-
+
 ;;; Commentary:
 ;;
 ;; `heroku-tramp.el' offers a TRAMP method for Heroku dynos
