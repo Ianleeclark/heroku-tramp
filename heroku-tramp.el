@@ -74,17 +74,12 @@
   (add-to-list 'tramp-methods
                `(,heroku-tramp-method
                  (tramp-login-program      ,heroku-tramp-heroku-executable)
-                 (tramp-login-args         (,heroku-tramp-heroku-options ("run" "/bin/bash")))
-                 (tramp-remote-shell       "/bin/bash"))))
+                 (tramp-login-args         (,heroku-tramp-heroku-options (list "run" "/bin/bash"))))))
 
 ;;;###autoload
 (eval-after-load 'tramp
   '(progn
-     (message "Loaded heroku-tramp")
      (heroku-tramp-add-method)
      (tramp-set-completion-function heroku-tramp-method heroku-tramp-completion-function-alist)))
 
 (provide 'heroku-tramp)
-
-;;;###autoload
-(message "Post-load")
