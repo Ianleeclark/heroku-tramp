@@ -46,7 +46,7 @@
            ;; ("app-name" "(eu)" "test@email.com"))
            for (app-name region email) = (split-string line "[[:space:]]+" t)
            ;; So we take only the first element (or: "app-name")
-           collect (list "" app-name)))
+           collect (list app-name app-name)))
 
 (defconst heroku-tramp-completion-function-alist
   '((heroku-tramp--available-apps  ""))
@@ -74,7 +74,7 @@
   (add-to-list 'tramp-methods
                `(,heroku-tramp-method
                  (tramp-login-program      ,heroku-tramp-heroku-executable)
-                 (tramp-login-args         (,heroku-tramp-heroku-options (list "run" "/bin/bash"))))))
+                 (tramp-login-args         (,heroku-tramp-heroku-options ("run" "/bin/bash") ("-a" "%h"))))))
 
 ;;;###autoload
 (eval-after-load 'tramp
